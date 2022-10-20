@@ -4,21 +4,7 @@ spring:
     name: risk-project
   config:
     import: "optional:configserver:http://localhost:8088"
-  datasource:
-    url: jdbc:h2:file:./target/h2db/db/usermanagementservice;DB_CLOSE_DELAY=-1
-    driverClassName: org.h2.Driver
-    username: usermanagementservice
-    password:
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      # disable spring boot built-in h2-console since we start it manually with correct configuration
-      enabled: true
-  liquibase:
-    # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
-    change-log: classpath:liquibase/master.xml
+
 
 #OpenApi configurations
 springdoc:
