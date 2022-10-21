@@ -1,48 +1,47 @@
 package io.sld.riskemailservice.resource;
 
-import io.sld.riskemailservice.domain.entity.Email;
+import io.sld.riskemailservice.domain.entity.EmailDetails;
 
 import io.sld.riskemailservice.domain.service.EmailService;
+import io.sld.riskemailservice.domain.service.EmailService1;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * REST controller for managing {@link Email}.
+ * REST controller for managing {@link EmailDetails}.
  */
 @RestController
-@RequestMapping("/api")
 public class EmailResource {
 
-    private final Logger log = LoggerFactory.getLogger(EmailResource.class);
+    @Autowired
+    private EmailService emailService;
 
-    private static final String ENTITY_NAME = "riskcomplianceserviceEmpresa";
+    // Sending a simple Email
+    @PostMapping("/sendMail")
+    public String
+    sendMail(@RequestBody EmailDetails details)
+    {
+        String status
+                = emailService.sendSimpleMail(details);
 
-    @Value("${spring.application.name}")
-    private String applicationName;
-
-    private final EmailService emailService;
-
-    public EmailResource(EmailService emailService) {
-        this.emailService = emailService;
+        return status;
     }
 
+    // Sending email with attachment
+    @PostMapping("/sendMailWithAttachment")
+    public String sendMailWithAttachment(
+            @RequestBody EmailDetails details)
+    {
+        String status
+                = emailService.sendMailWithAttachment(details);
 
-    /**
-     * {@code GET  /empresas/:id} : get the "id" empresa.
-     *
-     * @param id the id of the empresaDTO to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the empresaDTO, or with status {@code 404 (Not Found)}.
-     */
-//    @GetMapping("/empresas/{id}")
-//    public ResponseEntity<EmailDTO> getEmpresa(@PathVariable Long id) {
-//        log.debug("REST request to get Email : {}", id);
-//        Optional<EmailDTO> empresaDTO = empresaService.findOne(id);
-//        return ResponseUtil.wrapOrNotFound(empresaDTO);
-//    }
+        return status;
+    }
 
 
 }

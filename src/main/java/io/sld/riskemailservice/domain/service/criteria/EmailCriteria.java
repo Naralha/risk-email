@@ -3,7 +3,7 @@ package io.sld.riskemailservice.domain.service.criteria;
 import java.io.Serializable;
 import java.util.Objects;
 
-import io.sld.riskemailservice.domain.entity.Email;
+import io.sld.riskemailservice.domain.entity.EmailDetails;
 import io.sld.riskemailservice.resource.EmailResource;
 import org.springdoc.api.annotations.ParameterObject;
 import io.sld.riskemailservice.domain.service.filter.Filter;
@@ -11,7 +11,7 @@ import io.sld.riskemailservice.domain.service.filter.LongFilter;
 import io.sld.riskemailservice.domain.service.filter.StringFilter;
 
 /**
- * Criteria class for the {@link Email} entity. This class is used
+ * Criteria class for the {@link EmailDetails} entity. This class is used
  * in {@link EmailResource} to receive all the possible filtering options from
  * the Http GET request parameters.
  * For example the following could be a valid request:

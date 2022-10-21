@@ -4,7 +4,17 @@ spring:
     name: risk-project
   config:
     import: "optional:configserver:http://localhost:8088"
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: riskemailtests@gmail.com
+    password: riskriskrisk
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 #OpenApi configurations
 springdoc:
