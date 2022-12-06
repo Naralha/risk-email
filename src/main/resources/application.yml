@@ -4,17 +4,6 @@ spring:
     name: risk-project
   config:
     import: "optional:configserver:http://localhost:8088"
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: riskemailtests@gmail.com
-    password: riskriskrisk
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
 
 #OpenApi configurations
 springdoc:
@@ -39,6 +28,7 @@ swagger:
   external-documentation-url:
 
 #api.key : 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
-api.key : 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
+api:
+  key: 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
 
 
