@@ -13,14 +13,29 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-// Class
 public class EmailDetails {
 
     // Class data members
-    private String recipient;
-    private String msgBody;
-    private String subject;
-    private String attachment;
+    private Personalizations personalizations = new Personalizations();
+    private Content content = new Content();
+    private GenericEmailName from = new GenericEmailName();
+    private GenericEmailName reply_to = new GenericEmailName();
+
+    @Data
+    public class Personalizations {
+        private GenericEmailName to = new GenericEmailName();
+        private String subject;
+    }
+    @Data
+    public class GenericEmailName {
+        private String email;
+        private String name;
+    }
+    @Data
+    public class Content {
+        private String type;
+        private String value;
+    }
 }
+
 
